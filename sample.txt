@@ -1,0 +1,48 @@
+The syntax highlighter is able to handle plain strings,
+escaped characters \{ \# \u1234,
+wrongly escaped characters } and it recovers from errors.
+
+<p>It highlights multiple consecutive  space characters,
+tabs	and trailing space</p>
+
+<p>
+<a href="google.com" target="_blank">Link</a>
+</p>
+
+An interpolated {VAR} variable
+A missing {} variable name
+A trailing comma {VAR,} after the variable name
+SelectFormat: {VAR, select,
+  a {a}
+  =0 {equal <strong>sign</strong> in keys is not allowed for selects}
+  {missing key}
+  x {and the syntax highlighter recovers}
+}
+PluralFormat: {NUM, plural,
+  one {a}
+  two {b}
+  =10 {10}
+  some {another string}
+  other {x}
+}
+selectordinal {NUM, selectordinal,
+  other {x}
+  =10 {10}
+}
+user defined functions: {NOW, date} and {NOW, date, full}
+The linter marks PluralFormats and SelectFormats without "other" key:
+{VAR, select,
+  male {He}
+  female {She}
+} and it marks duplicate keys.
+nesting: {PERSON_CNT, select,
+  unknown {an unknown number of persons}
+  other {{PERSON_CNT, plural,
+    =0 {no one}
+    =0 {noone}
+    =2 {two persons}
+    one {one person}
+    =2 {2 persons}
+    other {# persons}
+  }}
+}

@@ -1,0 +1,119 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body,
+.toolBar {
+  display: flex;
+}
+
+body {
+  flex-direction: column;
+  margin: 0;
+}
+
+#textArea,
+.CodeMirror {
+  flex: 1 1 auto;
+  font-size: 16px;
+}
+
+#textArea,
+.button {
+  border: none;
+  outline: none;
+}
+
+#textArea {
+  padding: 4px; /* FIXME: scroll inconsistencies */
+  resize: none;
+}
+
+#textArea:focus::selection {
+  background-color: #d7d4f0;
+}
+
+#textArea:invalid + .toolBar {
+  display: none;
+}
+
+#textArea + .toolBar #highlight::before {
+  content: "Add ";
+}
+
+.CodeMirror + .toolBar #highlight::before {
+  content: "Remove ";
+}
+
+.toolBar,
+.button {
+  font-family: sans-serif;
+}
+
+.toolBar {
+  align-items: center;
+  background: #eee;
+  font-size: 14px;
+  justify-content: space-between;
+  padding: 8px;
+  user-select: none;
+}
+
+header.toolBar {
+  border-bottom: 1px solid #bbb;
+}
+
+footer.toolBar {
+  border-top: 1px solid #bbb;
+}
+
+.logo {
+  font-size: 20px;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  background: #079992;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  padding: 4px 8px;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.75;
+}
+
+.button:not(:active) {
+  border-bottom-width: 3px;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+#clear {
+  background: #e55039;
+}
+
+#highlight {
+  background: #4a69bd;
+}
+
+.notEditable {
+  color: #e55039;
+}
